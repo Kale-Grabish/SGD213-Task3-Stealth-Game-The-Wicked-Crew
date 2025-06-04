@@ -3,8 +3,10 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private float interactRange = 2f;
 
     // Allows other scripts access these variables without cluttering the inspector with public variable stuff :)
+    // ... existing properties ...
     public Vector2 MoveInput { get; private set; }
     public Vector2 LookInput { get; private set; }
     public float crouchCooldown = 0.3f;
@@ -16,6 +18,7 @@ public class PlayerInput : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
     }
+
     void Update()
     {
         MoveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -29,6 +32,7 @@ public class PlayerInput : MonoBehaviour
         }
 
         LeanCheck();
+        HandleInteraction();
     }
 
     void LeanCheck()
@@ -49,5 +53,21 @@ public class PlayerInput : MonoBehaviour
             playerAnimator.SetBool("IsLeaningRight", false);
         }
     }
+
+    private void HandleInteraction()
+    {
+        if (Input.GetKey(KeyCode.Z))
+        {
+            Collider[] hits = Physics.OverlapSphere(transform.position, interactRange);
+            foreach (Collider hit in hits)
+            {
+                Interactable interactable = hit.GetComponent<Interactable>();
+                if (interactable != null)
+                {
+                    interactable.OnInteraction();
+                    break;
+                }
+            }
+        }
+    }
 }
-    

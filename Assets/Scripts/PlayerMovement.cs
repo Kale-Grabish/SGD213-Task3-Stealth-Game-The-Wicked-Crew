@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float xRotation = 0f;
     private Camera playerCamera;
     private Animator playerAnimator;
+    private Box currentBox;
 
     public float walkSpeed = 10f;
     public float crouchSpeed = 7f;
@@ -70,5 +71,19 @@ public class PlayerMovement : MonoBehaviour
         // Toggle animation parameter to opposite bool
         bool current = playerAnimator.GetBool("IsCrouched");
         playerAnimator.SetBool("IsCrouched", !current);
+    }
+
+    public void EnterExitBox(Box box, bool entering, Vector3 newPosition)
+    {
+        if (entering)
+        {
+            currentBox = box;
+            transform.position = newPosition;
+        }
+        else
+        {
+            currentBox = null;
+            transform.position = newPosition;
+        }
     }
 }
