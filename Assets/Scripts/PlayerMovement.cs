@@ -12,9 +12,10 @@ public class PlayerMovement : MonoBehaviour
     private Animator playerAnimator;
     private Box currentBox;
 
+    [Header("Player Settings")]
     public float walkSpeed = 10f;
     public float crouchSpeed = 7f;
-    public float mouseSensitivity = 100f;
+    public float mouseSensitivity = 500f;
 
 
     void Awake()

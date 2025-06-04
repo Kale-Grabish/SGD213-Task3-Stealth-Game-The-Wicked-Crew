@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TestDetection : MonoBehaviour, IDetection
 {
     public float timer = 0f;
     public float maxTime = 5f;
+
+    private SceneLoader sceneLoader;
 
     public void Alert()
     {
@@ -14,7 +17,11 @@ public class TestDetection : MonoBehaviour, IDetection
             if (timer >= maxTime)
             {
                 Debug.Log("Max time reached");
-                // destroy player
+
+                // Reloads current scene with a loading screen, not that useful for the prototype
+                // but it'd give a more complex game an extra layer of polish
+                sceneLoader.LoadScene((SceneManager.GetActiveScene().buildIndex));
+
 
             }
         }
@@ -30,14 +37,28 @@ public class TestDetection : MonoBehaviour, IDetection
     public void OnTriggerEnter(Collider other)
     {
         Debug.Log("collision detected");
+
+        if (other.gameObject.CompareTag("Player"))
+        {
+            sceneLoader = other.GetComponent<SceneLoader>();
+        }
     }
+
     public void OnTriggerStay(Collider other)
     {
-        Alert();
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Alert();
+
+            Debug.Log(timer);
+        }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        Calm();
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Calm();
+        }
     }
 }

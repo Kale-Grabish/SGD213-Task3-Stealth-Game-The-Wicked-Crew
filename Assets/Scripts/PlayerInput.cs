@@ -6,7 +6,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private float interactRange = 2f;
 
     // Allows other scripts access these variables without cluttering the inspector with public variable stuff :)
-    // ... existing properties ...
+    // ... existing properties ... stinky, smelly properties ...
     public Vector2 MoveInput { get; private set; }
     public Vector2 LookInput { get; private set; }
     public float crouchCooldown = 0.3f;
@@ -56,7 +56,7 @@ public class PlayerInput : MonoBehaviour
 
     private void HandleInteraction()
     {
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             Collider[] hits = Physics.OverlapSphere(transform.position, interactRange);
             foreach (Collider hit in hits)
