@@ -1,30 +1,30 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class EnemyCamera : MonoBehaviour, IDetection
 {
     public float timer = 0f;
     public float maxTime = 5f;
-
+    public Material AlarmColour;
+    public Material CalmColour;
     private SceneLoader sceneLoader;
 
     public void Alert()
     {
-        // Resets the player once the timer has reached 5 seconds. Otherwise it continues counting upwards.
+        // Resets the player once the timer has reached 5 seconds. Otherwise it continues counting upwards. Sets the colour of the collision to red.
         if (timer <= maxTime)
         {
+            gameObject.GetComponent<Renderer>().material = AlarmColour;
             timer += Time.deltaTime;
 
             if (timer >= maxTime)
             {
-                Debug.Log("Max time reached");
-
-
                 // Reloads current scene with a loading screen, not that useful for the prototype
                 // but it'd give a more complex game an extra layer of polish
                 sceneLoader.LoadScene((SceneManager.GetActiveScene().buildIndex));
-
-
             }
         }
 
@@ -33,15 +33,13 @@ public class EnemyCamera : MonoBehaviour, IDetection
 
     public void Calm()
     {
-        // resets timer to 0
+        // resets timer to 0 and changes the collision colour to white.
         timer = 0f;
-        Debug.Log("timer reset");
+        gameObject.GetComponent<Renderer>().material = CalmColour;
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collision detected");
-
         // If a player has triggered the collision, it gets the scene loader component.
         if (other.gameObject.CompareTag("Player"))
         {
@@ -55,8 +53,6 @@ public class EnemyCamera : MonoBehaviour, IDetection
         if (other.gameObject.CompareTag("Player"))
         {
             Alert();
-
-            Debug.Log(timer);
         }
     }
 

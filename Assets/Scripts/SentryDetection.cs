@@ -1,25 +1,31 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Sentry : MonoBehaviour, IDetection
+
+public class SentryDetection : MonoBehaviour, IDetection
 {
     public float timer = 0f;
     public float maxTime = 5f;
-
+    public GameObject alarmedStatus;
     private SceneLoader sceneLoader;
+
+    private void Start()
+    {
+        Calm();
+    }
 
     public void Alert()
     {
-        // Resets the player once the timer has reached 5 seconds. Otherwise it continues counting upwards.
+        // Resets the player once the timer has reached 5 seconds. Otherwise it continues counting upwards. 
         if (timer <= maxTime)
         {
             timer += Time.deltaTime;
+            // Sets the alarmed text visible
+            alarmedStatus.GetComponent<MeshRenderer>().enabled = true;
 
             if (timer >= maxTime)
             {
-                Debug.Log("Max time reached");
-
-
                 // Reloads current scene with a loading screen, not that useful for the prototype
                 // but it'd give a more complex game an extra layer of polish
                 sceneLoader.LoadScene((SceneManager.GetActiveScene().buildIndex));
@@ -30,18 +36,16 @@ public class Sentry : MonoBehaviour, IDetection
 
     }
 
-   
+
     public void Calm()
     {
-        // resets timer to 0
+        // Resets the timer to 0 and sets the alarmed text invisible
         timer = 0f;
-        Debug.Log("timer reset");
+        alarmedStatus.GetComponent<MeshRenderer>().enabled = false;
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collision detected");
-        
         // If a player has triggered the collision, it gets the scene loader component.
         if (other.gameObject.CompareTag("Player"))
         {
@@ -55,8 +59,6 @@ public class Sentry : MonoBehaviour, IDetection
         if (other.gameObject.CompareTag("Player"))
         {
             Alert();
-
-            Debug.Log(timer);
         }
     }
 

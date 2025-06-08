@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class TestDetection : MonoBehaviour, IDetection
 {
+    // original test script for the detection mechanics 
+
     public float timer = 0f;
     public float maxTime = 5f;
 
@@ -16,14 +18,9 @@ public class TestDetection : MonoBehaviour, IDetection
 
             if (timer >= maxTime)
             {
-                Debug.Log("Max time reached");
-
-
                 // Reloads current scene with a loading screen, not that useful for the prototype
                 // but it'd give a more complex game an extra layer of polish
                 sceneLoader.LoadScene((SceneManager.GetActiveScene().buildIndex));
-
-
             }
         }
 
