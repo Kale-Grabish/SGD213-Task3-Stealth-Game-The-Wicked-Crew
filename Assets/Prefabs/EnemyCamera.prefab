@@ -139,7 +139,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.27808654, y: 0.65012914, z: 0.27808654, w: 0.65012914}
   m_LocalPosition: {x: 3.73, y: -3.4, z: -0.01}
-  m_LocalScale: {x: 1.9070361, y: 5.459947, z: 1.8599786}
+  m_LocalScale: {x: 3.251315, y: 5.536932, z: 1.8862041}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4249844193653795792}
@@ -233,6 +233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  maxTime: 5
+  maxTime: 2
   AlarmColour: {fileID: 2100000, guid: f3e9c0de8caad694ab2e71794650cdba, type: 2}
   CalmColour: {fileID: 2100000, guid: 0650b67596c63fd4fbcac0519d8c4e26, type: 2}

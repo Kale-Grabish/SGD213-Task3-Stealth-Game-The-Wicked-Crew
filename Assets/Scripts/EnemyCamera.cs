@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class EnemyCamera : MonoBehaviour, IDetection
 {
     public float timer = 0f;
-    public float maxTime = 5f;
+    public float maxTime = 1.5f;
     public Material AlarmColour;
     public Material CalmColour;
     private SceneLoader sceneLoader;

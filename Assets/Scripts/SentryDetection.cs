@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SentryDetection : MonoBehaviour, IDetection
 {
     public float timer = 0f;
-    public float maxTime = 5f;
+    public float maxTime = 1.5f;
     public GameObject alarmedStatus;
     private SceneLoader sceneLoader;
 
@@ -17,6 +17,7 @@ public class SentryDetection : MonoBehaviour, IDetection
 
     public void Alert()
     {
+        
         // Resets the player once the timer has reached 5 seconds. Otherwise it continues counting upwards. 
         if (timer <= maxTime)
         {
