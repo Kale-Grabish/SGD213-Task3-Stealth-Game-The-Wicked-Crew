@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+// Created by Xaviera Allingham
 
 public class SentryDetection : MonoBehaviour, IDetection
 {
@@ -60,6 +60,10 @@ public class SentryDetection : MonoBehaviour, IDetection
         if (other.gameObject.CompareTag("Player"))
         {
             Alert();
+        }
+        if(other.gameObject.CompareTag("Hidden"))
+        {
+            Calm();
         }
     }
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.EventSystems.EventTrigger;
+// Created by Xaviera Allingham
 public class SentryPatrol : MonoBehaviour
 {
     NavMeshAgent Sentry;

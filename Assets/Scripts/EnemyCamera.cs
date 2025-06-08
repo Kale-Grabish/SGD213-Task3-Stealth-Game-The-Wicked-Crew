@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+// Created by Xaviera Allingham
 
 public class EnemyCamera : MonoBehaviour, IDetection
 {

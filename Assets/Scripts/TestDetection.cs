@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class TestDetection : MonoBehaviour, IDetection
 {
     // original test script for the detection mechanics 
+    // Created by Xaviera Allingham
 
     public float timer = 0f;
     public float maxTime = 5f;

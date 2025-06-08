@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed = 10f;
     public float crouchSpeed = 7f;
     public float mouseSensitivity = 500f;
+   
 
 
     void Awake()
@@ -80,11 +81,16 @@ public class PlayerMovement : MonoBehaviour
         {
             currentBox = box;
             transform.position = newPosition;
+            gameObject.tag = "Hidden";
+        
+
         }
         else
         {
+            gameObject.tag = "Player";
             currentBox = null;
             transform.position = newPosition;
+            
         }
     }
 }
