@@ -2,6 +2,8 @@ using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Windows;
 
+// Created by Ned Tanner
+
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
@@ -75,22 +77,19 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator.SetBool("IsCrouched", !current);
     }
 
+    // Created by Kale Grabish
     public void EnterExitBox(Box box, bool entering, Vector3 newPosition)
     {
         if (entering)
         {
             currentBox = box;
             transform.position = newPosition;
-            gameObject.tag = "Hidden";
-        
-
         }
+        
         else
         {
-            gameObject.tag = "Player";
             currentBox = null;
             transform.position = newPosition;
-            
         }
     }
 }

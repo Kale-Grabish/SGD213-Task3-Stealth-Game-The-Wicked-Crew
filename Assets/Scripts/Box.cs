@@ -1,10 +1,12 @@
 using UnityEngine;
 
+// Created by Kale Grabish
+
 public class Box : Interactable
 {
     [Header("Box Settings")]
     public Transform exitPoint;
-    private bool isOccupied = false;
+    public bool isOccupied = false;
 
     public override void OnInteraction()
     {
@@ -20,7 +22,8 @@ public class Box : Interactable
 
     private void EnterExit(bool entering)
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        PlayerMovement player = FindFirstObjectByType<PlayerMovement>();
+
         if (player != null)
         {
             isOccupied = !entering;

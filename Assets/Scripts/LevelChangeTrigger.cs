@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Created by Ned Tanner
+
 public class LevelChangeTrigger : MonoBehaviour
 {
     private SceneLoader sceneLoader;

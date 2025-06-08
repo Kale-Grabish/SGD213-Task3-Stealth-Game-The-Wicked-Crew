@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+// Created by Ned Tanner
+
 public class SceneLoader : MonoBehaviour
 {
     public GameObject loadingScreen;

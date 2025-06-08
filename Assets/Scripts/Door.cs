@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
+// Created by Kale Grabish
 public class Door : Interactable
 {
     [Header("Door Settings")]

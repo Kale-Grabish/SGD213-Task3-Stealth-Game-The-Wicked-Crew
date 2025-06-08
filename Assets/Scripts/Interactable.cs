@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Created by Kale Grabish
+
 public abstract class Interactable : MonoBehaviour
 {
     [Header("Interaction Settings")]

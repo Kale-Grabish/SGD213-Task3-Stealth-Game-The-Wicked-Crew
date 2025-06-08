@@ -1,12 +1,13 @@
 using UnityEngine;
 
+// Created by Ned Tanner
+
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private float interactRange = 2f;
 
-    // Allows other scripts access these variables without cluttering the inspector with public variable stuff :)
-    // ... existing properties ... stinky, smelly properties ...
+    // Allows other scripts access these variables without cluttering the inspector with public variable stuff
     public Vector2 MoveInput { get; private set; }
     public Vector2 LookInput { get; private set; }
     public float crouchCooldown = 0.3f;
@@ -53,7 +54,8 @@ public class PlayerInput : MonoBehaviour
             playerAnimator.SetBool("IsLeaningRight", false);
         }
     }
-
+    
+    // Created by Kale Grabish
     private void HandleInteraction()
     {
         if (Input.GetKey(KeyCode.LeftShift))
